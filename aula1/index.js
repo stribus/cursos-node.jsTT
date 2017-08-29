@@ -7,3 +7,7 @@ Voo.prototype.getStatus = function(){
 
 var v = new Voo()
 console.log(v.getStatus());
+
+
+var obj = {status:'checaut'}
+console.log(v.getStatus.apply(obj))
