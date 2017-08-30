@@ -7,3 +7,4 @@ console.log( 'Um circulo de raio '+raio+' tem area de '+ circulo.area(raio));
 console.log( 'Um circulo de raio '+raio+' tem circunferencia de '+ circulo.circunferencia(raio));
 
 console.log(numberOne)
+console.log(numbertwo)
