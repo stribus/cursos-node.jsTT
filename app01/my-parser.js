@@ -1,24 +1,15 @@
-// Carregando o módulo fs (filesystem)
 var fs = require('fs');
 var Parser = require('./parser');
 
-
-// Leia o conteúdo do arquivo para a memória
-fs.readFile('exemple.log.txt', function (err, loData) {
-
-    // Se um erro ocorrer, será lançada uma
-    // exceção, e a aplicação irá ser encerrada
+fs.readFile('example-log.txt', (err, data) => {
     if (err) {
         throw err;
-
     }
 
-
-    // logData é um Buffer, converta-o para string
-    var text = loData.toString();
+    var texto = data.toString();
+    
     var parser = new Parser();
-    var results = parser.parser(text);
+    var result = parser.parse(texto);
 
-    console.log(results);
-
+    console.log(result);
 });

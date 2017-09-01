@@ -1,30 +1,23 @@
-// Construtor Parser
 var Parser = function () {
-
 };
 
-// Analisa o texto especificado
-Parser.prototype.parser = function (text) {
+Parser.prototype.parse = function (texto) {
+    var result = {};
+    
+    var linhas = texto.split('\n');
 
-    var results = {};
+    linhas.forEach(function (linha) {
+        var partes = linha.split(' '); // "data letra numero"
+        var letra = partes[1];
+        var numero = parseInt(partes[2]);
 
-    // Quebra o arquivo em linhas
-    var lines = text.split('\n');
-
-    lines.forEach(function (line) {
-        var parts = line.split(' ');
-        var letter = parts[1];
-        var count = parseInt(parts[2]);
-
-        if (!results[letter]) {
-            results[letter] = 0;
+        if (!result[letra]) {
+            result[letra] = 0; // result.a = 0;
         }
 
-        results[letter] += parseInt(count);
+        result[letra] += numero;
     });
-
-    return results;
+    return result;
 };
 
-// Exportando o construtor Parser neste módulo
 module.exports = Parser;
