@@ -8,5 +8,19 @@ mongoc.connect(url,(err,db)=>{
         return;
     }
     console.log('MongoDB conectado')
-
+    inserir(db,(result)=>{ console.log(result) })
 })
+
+
+var inserir = (db,callback)=>{
+    db.collection('teste').insertMany([
+        {nome:'ana'},
+        {nome:'pedro'},
+        {nome:'jonsnow'},
+    ],(err,result)=>{
+        if(err){
+            console.log(err)         
+        }   
+        callback(result)
+    })
+}
