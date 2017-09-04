@@ -8,9 +8,25 @@ router.get('/',(req,res)=>{
         if (err) {
             res.sendStatus(500);
         } else {
+            funcionarios.forEach(f=>{f.id = f._id})
             res.json(funcionarios);
         }
     });
+})
+
+router.delete('/:id',(req,res)=>{
+    const{ id} = req.params;
+    Funcionario.findById(id,(err,func)=>{
+        func.remove((err,result)=>{
+            res.sendStatus(200);
+        })
+    })
+})
+router.get('/:id',(req,res)=>{
+    const{ id} = req.params;
+    Funcionario.findById(id,(err,func)=>{
+        res.json(func);
+    })
 })
 
 
