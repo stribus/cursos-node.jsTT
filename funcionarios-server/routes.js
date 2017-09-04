@@ -3,7 +3,6 @@ var Funcionario = require('./models/funcionario');
 var router = express.Router();
 
 router.get('/',(req,res)=>{
-    console.log('xxxxx');
     Funcionario.find((err, funcionarios) => {
         if (err) {
             res.sendStatus(500);
@@ -26,6 +25,15 @@ router.get('/:id',(req,res)=>{
     const{ id} = req.params;
     Funcionario.findById(id,(err,func)=>{
         res.json(func);
+    })
+})
+
+router.put('/',(req,res)=>{
+    const {_id,nome,email,telefone,profissao} = req.body;
+    Funcionario.findById(_id,(err,func)=>{
+        func.update({nome,email,telefone,profissao},(err,r)=>{
+            res.sendStatus(200)
+        })
     })
 })
 
